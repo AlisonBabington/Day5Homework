@@ -54,8 +54,38 @@ def remove_pet_by_name(shop, pet_name)
   end
   end
 
-# def test_remove_pet_by_name
-#   remove_pet_by_name(@pet_shop, "Arthur")
-#   pet = find_pet_by_name(@pet_shop,"Arthur")
-#   assert_nil(pet)
+def add_pet_to_stock(shop, new_pet)
+  shop[:pets] << new_pet
+end
+
+def customer_cash(customer)
+  customer[:cash]
+end
+
+def remove_customer_cash(customer, amount)
+  customer[:cash] -= amount
+  return customer
+end
+
+def customer_pet_count(customer)
+  customer[:pets].count
+end
+
+def add_pet_to_customer(customer, new_pet)
+  customer[:pets] << new_pet
+  customer[:pets].count
+end
+
+# def test_customer_can_afford_pet__insufficient_funds
+#   customer = @customers[1]
+#   can_buy_pet = customer_can_afford_pet(customer, @new_pet)
+#   assert_equal(false, can_buy_pet)
 # end
+
+def customer_can_afford_pet(customer, new_pet)
+  if customer[:cash] > new_pet[:price]
+    return true
+  else
+    return false
+  end
+end
