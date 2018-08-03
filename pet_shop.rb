@@ -85,7 +85,9 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(shop, pet, customer)
-  if customer[:cash] > pet[:price]
+  if pet == nil
+    return nil
+  elsif customer[:cash] > pet[:price]
     customer[:pets] << pet
     customer[:pets].count
     customer[:cash] -= pet[:price]
