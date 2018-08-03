@@ -23,15 +23,13 @@ def stock_count(shop)
   shop[:pets].length
 end
 
-# def test_all_pets_by_breed__found
-#   pets = pets_by_breed(@pet_shop, "British Shorthair")
-#   assert_equal(2, pets.count)
-# end
-
-def pets_by_breed(shop , breed_name)
-  pets_breed = []
-  if pet in shop[:pets].each.include? breed_name
-    pet += pets_breed
+def pets_by_breed(shop, breed_name)
+  pets = shop[:pets]
+  pets_by_breed = []
+  for pet in pets
+  if pet[:breed] == breed_name
+    pets_by_breed.push(pet[:name])
   end
 end
+return pets_by_breed
 end
