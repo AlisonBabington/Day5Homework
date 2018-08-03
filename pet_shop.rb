@@ -76,16 +76,20 @@ def add_pet_to_customer(customer, new_pet)
   customer[:pets].count
 end
 
-# def test_customer_can_afford_pet__insufficient_funds
-#   customer = @customers[1]
-#   can_buy_pet = customer_can_afford_pet(customer, @new_pet)
-#   assert_equal(false, can_buy_pet)
-# end
-
 def customer_can_afford_pet(customer, new_pet)
   if customer[:cash] > new_pet[:price]
     return true
   else
     return false
+  end
+end
+
+def sell_pet_to_customer(shop, pet, customer)
+  if customer[:cash] > pet[:price]
+    customer[:pets] << pet
+    customer[:pets].count
+    customer[:cash] -= pet[:price]
+    shop[:admin][:total_cash] += pet[:price]
+    shop[:admin][:pets_sold] += 1
   end
 end
