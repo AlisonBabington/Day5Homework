@@ -33,3 +33,18 @@ def pets_by_breed(shop, breed_name)
 end
 return pets_by_breed
 end
+
+# def test_find_pet_by_name__returns_nil
+#   pet = find_pet_by_name(@pet_shop, "Fred")
+#   assert_nil(pet)
+# end
+
+def find_pet_by_name(shop, pet_name)
+  pets = shop[:pets]
+  for pet in pets
+    if pet[:name] == pet_name
+      return pet
+    end
+  end
+  return nil
+end
